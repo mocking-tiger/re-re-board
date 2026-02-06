@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { formatDate, generateId } from './utils/helpers';
 
 const App = () => {
+  const [id, setId] = useState('id');
+  const [formattedDate, setFormattedDate] = useState('date');
+
   return (
     <div className="App">
+      <p>{id}</p>
+      <p>{formattedDate}</p>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={() => setId(generateId())}>generate id</button>
+        <button onClick={() => setFormattedDate(formatDate(new Date()))}>generate date</button>
       </header>
     </div>
   );
-}
+};
 
 export default App;

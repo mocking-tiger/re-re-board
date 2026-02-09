@@ -1,0 +1,40 @@
+.card {
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  text-align: center;
+}
+
+.card-title {
+  flex: 1;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.card-description {
+  flex: 8;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  line-clamp: 4;
+  overflow: hidden;
+
+  font-size: 12px;
+  line-height: 1.2;
+  color: #5e6c84;
+}
+
+.card-date {
+  flex: 1;
+
+  font-size: 12px;
+  text-align: right;
+  color: #8c9bab;
+}

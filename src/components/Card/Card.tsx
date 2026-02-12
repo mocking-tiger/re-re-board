@@ -1,5 +1,5 @@
 import './Card.css';
-import { Card as CardType } from '../../types';
+import { Card as CardType } from '../../types/types';
 import { formatDate } from '../../utils/helpers';
 
 const Card = ({ card }: { card: CardType }) => {

@@ -1,0 +1,25 @@
+.list {
+  width: fit-content;
+  height: 600px;
+  padding: 20px 10px 10px 10px;
+  background-color: #abcdef;
+  border-radius: 10px;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #78a3c7 #e3edf7;
+}
+
+.list-title {
+  margin-bottom: 10px;
+
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.list-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

@@ -2,7 +2,13 @@ import './Card.css';
 import { Card as CardType } from '../../types/types';
 import { formatDate } from '../../utils/helpers';
 
-const Card = ({ card }: { card: CardType }) => {
+const Card = ({
+  card,
+  onDeleteCard,
+}: {
+  card: CardType;
+  onDeleteCard: (listId: string, cardId: string) => void;
+}) => {
   console.log(card);
 
   return (

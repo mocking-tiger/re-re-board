@@ -2,7 +2,15 @@ import './List.css';
 import Card from '../Card/Card';
 import { List as ListType } from '../../types/types';
 
-const List = ({ list }: { list: ListType }) => {
+const List = ({
+  list,
+  onAddCard,
+  onDeleteCard,
+}: {
+  list: ListType;
+  onAddCard: (listId: string, title: string) => void;
+  onDeleteCard: (listId: string, cardId: string) => void;
+}) => {
   console.log(list);
 
   return (
@@ -10,7 +18,7 @@ const List = ({ list }: { list: ListType }) => {
       <h1 className="list-title">{list.title}</h1>
       <div className="list-cards">
         {list.cards.map((card) => (
-          <Card key={card.id} card={card} />
+          <Card key={card.id} card={card} onDeleteCard={onDeleteCard} />
         ))}
       </div>
     </div>

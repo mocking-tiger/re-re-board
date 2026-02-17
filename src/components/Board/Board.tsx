@@ -10,12 +10,16 @@ const Board = () => {
     title: '더미 보드',
     lists,
   });
+
+  const addCard = (listId: string, title: string) => {};
+
+  const deleteCard = (listId: string, cardId: string) => {};
   return (
     <div className="board">
       <h1 className="board-title">{board.title}</h1>
       <div className="board-lists">
         {board.lists.map((list) => (
-          <List key={list.id} list={list} />
+          <List key={list.id} list={list} onAddCard={addCard} onDeleteCard={deleteCard} />
         ))}
       </div>
     </div>

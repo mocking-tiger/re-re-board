@@ -6,7 +6,7 @@
   border-radius: 10px;
   overflow-y: auto;
 
-  scrollbar-width: thin;
+  scrollbar-width: none;
   scrollbar-color: #78a3c7 #e3edf7;
 }
 

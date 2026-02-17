@@ -46,7 +46,7 @@ export const cards1 = [
   },
   {
     id: generateId(),
-    title: '밥도 잘 먹지 못해 ',
+    title: '밥도 잘 먹지 못해',
     description:
       '혼자 살아서 뭐해 네가 더 잘 알잖아 너 없인 나 안돼잖아 너밖에 몰라서 너없인 밥도 잘 먹지 못하는 난데 차마 죽지도 못해 네가 돌아올까봐 울면서 날 찾을까봐 오늘도 내일도',
     displayOrder: 3,
@@ -54,34 +54,24 @@ export const cards1 = [
   },
   {
     id: generateId(),
-    title: '밥도 잘 먹지 못해 ',
-    description:
-      '혼자 살아서 뭐해 네가 더 잘 알잖아 너 없인 나 안돼잖아 너밖에 몰라서 너없인 밥도 잘 먹지 못하는 난데 차마 죽지도 못해 네가 돌아올까봐 울면서 날 찾을까봐 오늘도 내일도',
-    displayOrder: 3,
+    title: '별이 빛나는 밤에',
+    description: '조용히 창문을 열어 밤하늘을 바라봐요. 별들이 속삭이는 듯 내 마음이 설레어와요.',
+    displayOrder: 4,
     createdAt: new Date(),
   },
   {
     id: generateId(),
-    title: '밥도 잘 먹지 못해 ',
-    description:
-      '혼자 살아서 뭐해 네가 더 잘 알잖아 너 없인 나 안돼잖아 너밖에 몰라서 너없인 밥도 잘 먹지 못하는 난데 차마 죽지도 못해 네가 돌아올까봐 울면서 날 찾을까봐 오늘도 내일도',
-    displayOrder: 3,
+    title: '햇살 좋은 오후',
+    description: '나른한 오후 한가로운 카페에서 햇살 가득 받아 마시며 잠시 쉬어요.',
+    displayOrder: 5,
     createdAt: new Date(),
   },
   {
     id: generateId(),
-    title: '밥도 잘 먹지 못해 ',
+    title: '추억의 여행길',
     description:
-      '혼자 살아서 뭐해 네가 더 잘 알잖아 너 없인 나 안돼잖아 너밖에 몰라서 너없인 밥도 잘 먹지 못하는 난데 차마 죽지도 못해 네가 돌아올까봐 울면서 날 찾을까봐 오늘도 내일도',
-    displayOrder: 3,
-    createdAt: new Date(),
-  },
-  {
-    id: generateId(),
-    title: '밥도 잘 먹지 못해 ',
-    description:
-      '혼자 살아서 뭐해 네가 더 잘 알잖아 너 없인 나 안돼잖아 너밖에 몰라서 너없인 밥도 잘 먹지 못하는 난데 차마 죽지도 못해 네가 돌아올까봐 울면서 날 찾을까봐 오늘도 내일도',
-    displayOrder: 3,
+      '오래된 사진을 꺼내보다가 그때의 웃음과 그리움을 떠올려 본다. 다시 떠나고 싶어지는 여행길.',
+    displayOrder: 6,
     createdAt: new Date(),
   },
 ];

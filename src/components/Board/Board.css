@@ -1,0 +1,16 @@
+.board {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.board-title {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}

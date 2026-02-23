@@ -6,7 +6,9 @@ const App = () => {
   return (
     <div className="App">
       <Board />
-      <button onClick={clearBoard}>보드 초기화</button>
+      <button className="reset-button" onClick={clearBoard}>
+        보드 초기화
+      </button>
     </div>
   );
 };

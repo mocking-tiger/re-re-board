@@ -6,23 +6,28 @@ import { generateId } from './helpers';
 const STORAGE_KEY = 'happy-2026';
 
 export const initialBoard = () => {
+  const boardId = generateId();
+  const listId = generateId();
+  const cardId = generateId();
   return {
-    id: generateId(),
+    id: boardId,
     title: '나의 첫 보드',
     lists: [
       {
-        id: generateId(),
+        id: listId,
         title: '할 일',
         cards: [
           {
-            id: generateId(),
+            id: cardId,
             title: '환영합니다!',
             description: '카드를 추가하고 목록을 관리해보세요.',
             displayOrder: 1,
             createdAt: new Date(),
+            listId,
           },
         ],
         displayOrder: 1,
+        boardId,
       },
     ],
   };
@@ -52,4 +57,5 @@ export const getBoard = () => {
 
 export const clearBoard = () => {
   localStorage.removeItem(STORAGE_KEY);
+  window.location.reload();
 };

@@ -9,13 +9,14 @@ const Card = ({
   card: CardType;
   onDeleteCard: (listId: string, cardId: string) => void;
 }) => {
-  console.log(card);
-
   return (
     <div className="card">
       <h1 className="card-title">{card.title}</h1>
       <p className="card-description">{card.description}</p>
       <span className="card-date">{formatDate(card.createdAt)}</span>
+      <button className="card-delete-button" onClick={() => onDeleteCard(card.listId, card.id)}>
+        삭제
+      </button>
     </div>
   );
 };

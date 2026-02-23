@@ -11,8 +11,6 @@ const List = ({
   onAddCard: (listId: string, title: string) => void;
   onDeleteCard: (listId: string, cardId: string) => void;
 }) => {
-  console.log(list);
-
   return (
     <div className="list">
       <h1 className="list-title">{list.title}</h1>

@@ -27,6 +27,17 @@ const Board = () => {
     saveBoard(newBoard);
   };
 
+  const deleteList = (listId: string) => {
+    if (!board) return;
+
+    const newBoard = {
+      ...board,
+      lists: board.lists.filter((list) => list.id !== listId),
+    };
+    setBoard(newBoard);
+    saveBoard(newBoard);
+  };
+
   const addCard = (listId: string) => {
     if (!board) return;
 
@@ -76,7 +87,13 @@ const Board = () => {
       <h1 className="board-title">{board.title}</h1>
       <div className="board-lists">
         {board.lists.map((list) => (
-          <List key={list.id} list={list} onAddCard={addCard} onDeleteCard={deleteCard} />
+          <List
+            key={list.id}
+            list={list}
+            onDeleteList={deleteList}
+            onAddCard={addCard}
+            onDeleteCard={deleteCard}
+          />
         ))}
         <button className="board-add-list-button" onClick={addList}>
           리스트 추가

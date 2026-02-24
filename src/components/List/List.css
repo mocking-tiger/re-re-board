@@ -7,7 +7,6 @@
   border-radius: 10px;
   overflow-y: auto;
   position: relative;
-
   scrollbar-width: none;
   scrollbar-color: #78a3c7 #e3edf7;
 }
@@ -18,6 +17,21 @@
   text-align: center;
   font-size: 16px;
   font-weight: bold;
+}
+
+.list-delete-button {
+  width: 20px;
+  height: 20px;
+  padding-bottom: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 1px solid #8c9bab;
+  border-radius: 100%;
+  cursor: pointer;
 }
 
 .list-add-card-button {

@@ -32,13 +32,17 @@ export const boardReducer = (state: Board, action: BoardAction) => {
       };
 
     case 'ADD_CARD':
+      const list = state.lists.find((list) => list.id === action.payload.listId);
+
+      if (!list) {
+        return state;
+      }
+
       const newCard: Card = {
         id: generateId(),
         title: '새 카드',
         description: '내용을 입력하세요',
-        displayOrder: getNextDisplayOrder(
-          state.lists.find((list) => list.id === action.payload.listId)?.cards || []
-        ),
+        displayOrder: getNextDisplayOrder(list.cards),
         createdAt: new Date(),
         listId: action.payload.listId,
       };

@@ -4,7 +4,7 @@ import { getBoard, initialBoard, saveBoard } from '../utils/storage';
 
 export const useBoard = () => {
   // 상태 관리
-  const [board, dispatch] = useReducer(boardReducer, null, () => getBoard() || initialBoard());
+  const [board, dispatch] = useReducer(boardReducer, getBoard() || initialBoard());
 
   // 자동 저장
   useEffect(() => {

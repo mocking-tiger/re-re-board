@@ -10,9 +10,9 @@ const Board = () => {
   // UI에만 집중
   return (
     <div className="board">
-      <h1 className="board-title">{board?.title}</h1>
+      <h1 className="board-title">{board.title}</h1>
       <div className="board-lists">
-        {board?.lists.map((list) => (
+        {board.lists.map((list) => (
           <List
             key={list.id}
             list={list}

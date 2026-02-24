@@ -8,7 +8,7 @@ const List = ({
   onDeleteCard,
 }: {
   list: ListType;
-  onAddCard: (listId: string, title: string) => void;
+  onAddCard: (listId: string) => void;
   onDeleteCard: (listId: string, cardId: string) => void;
 }) => {
   return (
@@ -19,6 +19,9 @@ const List = ({
           <Card key={card.id} card={card} onDeleteCard={onDeleteCard} />
         ))}
       </div>
+      <button className="list-add-card-button" onClick={() => onAddCard(list.id)}>
+        +
+      </button>
     </div>
   );
 };

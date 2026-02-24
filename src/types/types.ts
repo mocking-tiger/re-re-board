@@ -27,3 +27,11 @@ export interface Board {
   title: string;
   lists: List[];
 }
+
+export interface IdObject {
+  id: string;
+}
+
+export interface OrderableObject extends IdObject {
+  displayOrder: number;
+}

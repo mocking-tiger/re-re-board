@@ -1,3 +1,5 @@
+import { OrderableObject } from '../types/types';
+
 export const generateId = () => {
   // Math.random().toString(36)은 난수를 36진수 문자열(숫자+영문 소문자)로 변환(예: '0.123456789abcdef').
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
@@ -15,4 +17,8 @@ export const formatDate = (date: Date) => {
     month: 'long',
     day: 'numeric',
   }).format(date);
+};
+
+export const getNextDisplayOrder = (orderableObject: OrderableObject[]) => {
+  return Math.max(...orderableObject.map((obj) => obj.displayOrder)) + 1;
 };

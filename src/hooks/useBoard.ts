@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { boardReducer } from '../reducers/boardReducer';
 import { getBoard, initialBoard, saveBoard } from '../utils/storage';
 
@@ -12,21 +12,21 @@ export const useBoard = () => {
   }, [board]);
 
   // 액션 함수들
-  const addList = () => {
+  const addList = useCallback(() => {
     dispatch({ type: 'ADD_LIST' });
-  };
+  }, []);
 
-  const deleteList = (listId: string) => {
+  const deleteList = useCallback((listId: string) => {
     dispatch({ type: 'DELETE_LIST', payload: { listId } });
-  };
+  }, []);
 
-  const addCard = (listId: string) => {
+  const addCard = useCallback((listId: string) => {
     dispatch({ type: 'ADD_CARD', payload: { listId } });
-  };
+  }, []);
 
-  const deleteCard = (listId: string, cardId: string) => {
+  const deleteCard = useCallback((listId: string, cardId: string) => {
     dispatch({ type: 'DELETE_CARD', payload: { listId, cardId } });
-  };
+  }, []);
 
   return { board, addList, deleteList, addCard, deleteCard };
 };

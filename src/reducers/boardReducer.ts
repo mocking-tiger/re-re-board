@@ -8,9 +8,6 @@ export type BoardAction =
   | { type: 'DELETE_CARD'; payload: { listId: string; cardId: string } };
 
 export const boardReducer = (state: Board, action: BoardAction) => {
-  console.log(state);
-  console.log(action);
-
   switch (action.type) {
     case 'ADD_LIST':
       const newList: List = {

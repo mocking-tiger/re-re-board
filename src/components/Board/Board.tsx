@@ -1,12 +1,31 @@
 import './Board.css';
 import List from '../List/List';
 import { useState } from 'react';
-import { Board as BoardType, Card as CardType } from '../../types/types';
+import { Board as BoardType, List as ListType, Card as CardType } from '../../types/types';
 import { getBoard, initialBoard, saveBoard } from '../../utils/storage';
 import { generateId, getNextDisplayOrder } from '../../utils/helpers';
 
 const Board = () => {
   const [board, setBoard] = useState<BoardType | null>(() => getBoard() || initialBoard());
+
+  const addList = () => {
+    if (!board) return;
+
+    const newList: ListType = {
+      id: generateId(),
+      title: '새 리스트',
+      cards: [],
+      displayOrder: getNextDisplayOrder(board.lists),
+      boardId: board.id,
+    };
+
+    const newBoard = {
+      ...board,
+      lists: [...board.lists, newList],
+    };
+    setBoard(newBoard);
+    saveBoard(newBoard);
+  };
 
   const addCard = (listId: string) => {
     if (!board) return;
@@ -50,6 +69,7 @@ const Board = () => {
   if (!board) {
     return <div>보드를 불러오는 중...</div>;
   }
+
   console.log(board);
   return (
     <div className="board">
@@ -58,6 +78,9 @@ const Board = () => {
         {board.lists.map((list) => (
           <List key={list.id} list={list} onAddCard={addCard} onDeleteCard={deleteCard} />
         ))}
+        <button className="board-add-list-button" onClick={addList}>
+          리스트 추가
+        </button>
       </div>
     </div>
   );

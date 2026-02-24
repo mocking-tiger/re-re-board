@@ -1,5 +1,6 @@
 import './Board.css';
 import List from '../List/List';
+import Button from '../UI/Button/Button';
 import { useState } from 'react';
 import { generateId, getNextDisplayOrder } from '../../utils/helpers';
 import { getBoard, initialBoard, saveBoard } from '../../utils/storage';
@@ -95,9 +96,9 @@ const Board = () => {
             onDeleteCard={deleteCard}
           />
         ))}
-        <button className="board-add-list-button" onClick={addList}>
-          리스트 추가
-        </button>
+        <Button className="board-add-list-button" onClick={addList}>
+          +
+        </Button>
       </div>
     </div>
   );

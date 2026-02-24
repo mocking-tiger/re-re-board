@@ -15,7 +15,9 @@ const Card = ({
       <h1 className="card-title">{card.title}</h1>
       <p className="card-description">{card.description}</p>
       <span className="card-date">{formatDate(card.createdAt)}</span>
-      <Button onClick={() => onDeleteCard(card.listId, card.id)}>삭제</Button>
+      <Button className="card-delete-button" onClick={() => onDeleteCard(card.listId, card.id)}>
+        x
+      </Button>
     </div>
   );
 };

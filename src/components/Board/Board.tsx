@@ -1,33 +1,27 @@
 import './Board.css';
 import List from '../List/List';
 import Button from '../UI/Button/Button';
-import { useEffect, useReducer } from 'react';
-import { getBoard, initialBoard, saveBoard } from '../../utils/storage';
-import { boardReducer } from '../../reducers/boardReducer';
+import { useBoard } from '../../hooks/useBoard';
 
 const Board = () => {
-  const [board, dispatch] = useReducer(boardReducer, null, () => getBoard() || initialBoard());
+  // 로직은 커스텀 훅에서 관리
+  const { board, addList, deleteList, addCard, deleteCard } = useBoard();
 
-  useEffect(() => {
-    saveBoard(board);
-  }, [board]);
-
+  // UI에만 집중
   return (
     <div className="board">
-      <h1 className="board-title">{board.title}</h1>
+      <h1 className="board-title">{board?.title}</h1>
       <div className="board-lists">
-        {board.lists.map((list) => (
+        {board?.lists.map((list) => (
           <List
             key={list.id}
             list={list}
-            onDeleteList={() => dispatch({ type: 'DELETE_LIST', payload: { listId: list.id } })}
-            onAddCard={() => dispatch({ type: 'ADD_CARD', payload: { listId: list.id } })}
-            onDeleteCard={(listId, cardId) =>
-              dispatch({ type: 'DELETE_CARD', payload: { listId, cardId } })
-            }
+            onDeleteList={deleteList}
+            onAddCard={addCard}
+            onDeleteCard={deleteCard}
           />
         ))}
-        <Button className="list-add-button" onClick={() => dispatch({ type: 'ADD_LIST' })}>
+        <Button className="list-add-button" onClick={addList}>
           +
         </Button>
       </div>

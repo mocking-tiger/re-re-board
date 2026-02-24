@@ -27,7 +27,7 @@ const Board = () => {
             }
           />
         ))}
-        <Button className="board-add-list-button" onClick={() => dispatch({ type: 'ADD_LIST' })}>
+        <Button className="list-add-button" onClick={() => dispatch({ type: 'ADD_LIST' })}>
           +
         </Button>
       </div>

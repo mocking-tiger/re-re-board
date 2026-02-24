@@ -26,7 +26,7 @@ const List = ({
           <Card key={card.id} card={card} onDeleteCard={onDeleteCard} />
         ))}
       </div>
-      <Button className="list-add-button" onClick={() => onAddCard(list.id)}>
+      <Button className="card-add-button" onClick={() => onAddCard(list.id)}>
         +
       </Button>
     </div>

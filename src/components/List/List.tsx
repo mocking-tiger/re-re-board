@@ -1,7 +1,7 @@
 import './List.css';
 import Card from '../Card/Card';
+import Button from '../UI/Button/Button';
 import { List as ListType } from '../../types/types';
-import { useState } from 'react';
 
 const List = ({
   list,
@@ -14,30 +14,21 @@ const List = ({
   onAddCard: (listId: string) => void;
   onDeleteCard: (listId: string, cardId: string) => void;
 }) => {
-  const [isHovering, setIsHovering] = useState(false);
-
   return (
-    <div
-      className="list"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
+    <div className="list">
       <h1 className="list-title">{list.title}</h1>
-      <button
-        className="list-delete-button"
-        onClick={() => onDeleteList(list.id)}
-        style={{ display: isHovering ? 'block' : 'none' }}
-      >
+      <Button className="list-delete-button" onClick={() => onDeleteList(list.id)}>
         x
-      </button>
+      </Button>
+
       <div className="list-cards">
         {list.cards.map((card) => (
           <Card key={card.id} card={card} onDeleteCard={onDeleteCard} />
         ))}
       </div>
-      <button className="list-add-card-button" onClick={() => onAddCard(list.id)}>
+      <Button className="list-add-button" onClick={() => onAddCard(list.id)}>
         +
-      </button>
+      </Button>
     </div>
   );
 };

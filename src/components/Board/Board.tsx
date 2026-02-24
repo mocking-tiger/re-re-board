@@ -1,9 +1,9 @@
 import './Board.css';
 import List from '../List/List';
 import { useState } from 'react';
-import { Board as BoardType, List as ListType, Card as CardType } from '../../types/types';
-import { getBoard, initialBoard, saveBoard } from '../../utils/storage';
 import { generateId, getNextDisplayOrder } from '../../utils/helpers';
+import { getBoard, initialBoard, saveBoard } from '../../utils/storage';
+import { Board as BoardType, List as ListType, Card as CardType } from '../../types/types';
 
 const Board = () => {
   const [board, setBoard] = useState<BoardType | null>(() => getBoard() || initialBoard());

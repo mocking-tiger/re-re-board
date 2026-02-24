@@ -1,0 +1,22 @@
+.button {
+  width: 100%;
+  height: 20px;
+  border: 1px solid #8c9bab;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.list-add-button {
+  margin-top: 10px;
+}
+
+.list-delete-button {
+  width: 20px;
+  height: 20px;
+  padding-bottom: 2px;
+  display: none;
+}
+
+.list:hover .list-delete-button {
+  display: block;
+}

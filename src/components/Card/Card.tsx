@@ -1,6 +1,7 @@
 import './Card.css';
-import { Card as CardType } from '../../types/types';
+import Button from '../UI/Button/Button';
 import { formatDate } from '../../utils/helpers';
+import { Card as CardType } from '../../types/types';
 
 const Card = ({
   card,
@@ -14,9 +15,7 @@ const Card = ({
       <h1 className="card-title">{card.title}</h1>
       <p className="card-description">{card.description}</p>
       <span className="card-date">{formatDate(card.createdAt)}</span>
-      <button className="card-delete-button" onClick={() => onDeleteCard(card.listId, card.id)}>
-        삭제
-      </button>
+      <Button onClick={() => onDeleteCard(card.listId, card.id)}>삭제</Button>
     </div>
   );
 };

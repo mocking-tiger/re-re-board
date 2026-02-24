@@ -20,7 +20,9 @@ const List = memo(
 
     return (
       <div className="list">
-        <h1 className="list-title">{list.title}</h1>
+        <h1 className="list-title">
+          {list.title} ({list.cards.length})
+        </h1>
         <Button className="list-delete-button" onClick={() => onDeleteList(list.id)}>
           x
         </Button>

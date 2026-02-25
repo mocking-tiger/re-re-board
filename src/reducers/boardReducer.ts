@@ -17,6 +17,7 @@ export const boardReducer = (state: Board, action: BoardAction) => {
         displayOrder: getNextDisplayOrder(state.lists),
         boardId: state.id,
       };
+
       return {
         ...state,
         lists: [...state.lists, newList],

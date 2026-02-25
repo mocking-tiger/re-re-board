@@ -1,12 +1,13 @@
 import './Board.css';
 import List from '../List/List';
 import Button from '../UI/Button/Button';
-import { useBoard } from '../../hooks/useBoard';
+// import { useBoard } from '../../hooks/useBoard';
 import BoardStats from './_components/BoardStats/BoardStats';
+import { Board as BoardType, List as ListType } from '../../types/types';
 
-const Board = () => {
+const Board = ({ board }: { board: BoardType }) => {
   // 로직은 커스텀 훅에서 관리
-  const { board, addList, deleteList, addCard, deleteCard } = useBoard();
+  // const { board, addList, deleteList, addCard, deleteCard } = useBoard();
 
   // UI에만 집중
   return (
@@ -16,16 +17,16 @@ const Board = () => {
         <BoardStats board={board} />
       </div>
       <div className="board-lists">
-        {board.lists.map((list) => (
+        {board.lists.map((list: ListType) => (
           <List
             key={list.id}
             list={list}
-            onDeleteList={deleteList}
-            onAddCard={addCard}
-            onDeleteCard={deleteCard}
+            onDeleteList={() => {}}
+            onAddCard={() => {}}
+            onDeleteCard={() => {}}
           />
         ))}
-        <Button className="list-add-button" onClick={addList}>
+        <Button className="list-add-button" onClick={() => {}}>
           +
         </Button>
       </div>

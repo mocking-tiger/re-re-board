@@ -1,6 +1,6 @@
 //db 대용
 
-import { Board, Card, List } from '../types/types';
+import { Board, BoardsState, Card, List } from '../types/types';
 import { generateId } from './helpers';
 
 const STORAGE_KEY = 'happy-2026';
@@ -9,9 +9,10 @@ export const initialBoard = () => {
   const boardId = generateId();
   const listId = generateId();
   const cardId = generateId();
-  return {
+  const newBoard: Board = {
     id: boardId,
     title: '나의 첫 보드',
+    displayOrder: 1,
     lists: [
       {
         id: listId,
@@ -31,6 +32,8 @@ export const initialBoard = () => {
       },
     ],
   };
+
+  return newBoard;
 };
 
 export const saveBoard = (board: Board) => {
@@ -57,5 +60,40 @@ export const getBoard = () => {
 
 export const clearBoard = () => {
   localStorage.removeItem(STORAGE_KEY);
+  window.location.reload();
+};
+
+const BOARDS_STORAGE_KEY = 'happy-2026-boards';
+
+export const initialBoards = () => {
+  const newBoard = initialBoard();
+  return {
+    boards: [newBoard],
+    selectedBoardId: newBoard.id,
+  };
+};
+
+export const saveBoards = (boards: BoardsState) => {
+  localStorage.setItem(BOARDS_STORAGE_KEY, JSON.stringify(boards));
+};
+
+export const getBoards = () => {
+  const boardsData = localStorage.getItem(BOARDS_STORAGE_KEY);
+  if (!boardsData) {
+    return null;
+  }
+  const boards = JSON.parse(boardsData);
+  boards.boards.forEach((board: Board) => {
+    board.lists.forEach((list: List) => {
+      list.cards.forEach((card: Card) => {
+        card.createdAt = new Date(card.createdAt);
+      });
+    });
+  });
+  return boards;
+};
+
+export const clearBoards = () => {
+  localStorage.removeItem(BOARDS_STORAGE_KEY);
   window.location.reload();
 };

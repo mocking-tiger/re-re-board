@@ -16,22 +16,29 @@ export interface List {
   id: string;
 
   title: string;
-  cards: Card[];
   displayOrder: number;
 
   boardId: string;
+  cards: Card[];
 }
 
 export interface Board {
   id: string;
+
   title: string;
+  displayOrder: number;
+
   lists: List[];
+}
+
+export interface BoardsState {
+  boards: Board[];
+  selectedBoardId: string;
 }
 
 // ================================================================
 // 공용 객체
 // ================================================================
-
 export interface IdObject {
   id: string;
 }

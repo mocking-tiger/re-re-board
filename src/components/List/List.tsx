@@ -16,8 +16,6 @@ const List = memo(
     onAddCard: (listId: string) => void;
     onDeleteCard: (listId: string, cardId: string) => void;
   }) => {
-    console.log('리스트', list.id, '렌더링');
-
     return (
       <div className="list">
         <h1 className="list-title">

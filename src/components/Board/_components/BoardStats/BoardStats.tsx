@@ -4,7 +4,6 @@ import { Board as BoardType } from '../../../../types/types';
 const BoardStats = ({ board }: { board: BoardType }) => {
   const totalLists = board.lists.length;
   const totalCards = board.lists.reduce((acc, cur) => {
-    console.log(acc, '에', cur.cards.length, '를 더함');
     return acc + cur.cards.length;
   }, 0);
 

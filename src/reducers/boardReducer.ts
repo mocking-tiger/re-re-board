@@ -30,12 +30,15 @@ export const boardReducer = (state: Board, action: BoardAction) => {
       };
 
     case 'ADD_CARD':
+      console.log({ state });
+      console.log({ action });
       const list = state.lists.find((list) => list.id === action.payload.listId);
-
+      console.log('list', list);
       if (!list) {
         return state;
       }
 
+      console.log('newCard');
       const newCard: Card = {
         id: generateId(),
         title: '새 카드',

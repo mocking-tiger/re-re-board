@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useReducer } from 'react';
 import { boardReducer } from '../reducers/boardReducer';
-import { getBoard, initialBoard, saveBoard } from '../utils/storage';
+// import { saveBoards } from '../utils/storage';
+import { Board as BoardType } from '../types/types';
+// import { useBoards } from './useBoards';
 
-export const useBoard = () => {
+export const useBoard = (selectedBoard: BoardType) => {
   // 상태 관리
-  const [board, dispatch] = useReducer(boardReducer, getBoard() || initialBoard());
+  const [board, dispatch] = useReducer(boardReducer, selectedBoard);
+  //   const { boards } = useBoards();
 
   // 자동 저장
   useEffect(() => {
-    saveBoard(board);
+    console.log('board', board);
   }, [board]);
 
   // 액션 함수들

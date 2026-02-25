@@ -5,6 +5,7 @@ export type BoardsAction =
   | { type: 'ADD_BOARD' }
   | { type: 'SELECT_BOARD'; payload: { boardId: string } }
   | { type: 'DELETE_BOARD'; payload: { boardId: string } }
+  | { type: 'ADD_LIST'; payload: { boardId: string } }
   | { type: 'ADD_CARD'; payload: { boardId: string; listId: string } };
 
 export const boardsReducer = (state: BoardsState, action: BoardsAction) => {
@@ -27,7 +28,30 @@ export const boardsReducer = (state: BoardsState, action: BoardsAction) => {
         ...state,
         boards: state.boards.filter((board) => board.id !== action.payload.boardId),
       };
-    case 'ADD_CARD':
+    case 'ADD_LIST': {
+      const selectedBoard: Board | undefined = state.boards.find(
+        (board) => board.id === action.payload.boardId
+      );
+      if (!selectedBoard) {
+        return state;
+      }
+      const newList: List = {
+        id: generateId(),
+        title: '새 리스트',
+        cards: [],
+        displayOrder: getNextDisplayOrder(selectedBoard.lists),
+        boardId: selectedBoard.id,
+      };
+      return {
+        ...state,
+        boards: state.boards.map((board: Board) =>
+          board.id === selectedBoard.id
+            ? { ...selectedBoard, lists: [...selectedBoard.lists, newList] }
+            : board
+        ),
+      };
+    }
+    case 'ADD_CARD': {
       console.log('action', action);
       console.log('state', state);
       const selectedBoard: Board | undefined = state.boards.find(
@@ -61,6 +85,7 @@ export const boardsReducer = (state: BoardsState, action: BoardsAction) => {
             : board
         ),
       };
+    }
     default:
       return state;
   }

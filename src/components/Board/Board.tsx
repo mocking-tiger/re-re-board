@@ -8,9 +8,11 @@ import { memo } from 'react';
 const Board = memo(
   ({
     board,
+    onAddList,
     onAddCard,
   }: {
     board: BoardType;
+    onAddList: (boardId: string) => void;
     onAddCard: (boardId: string, listId: string) => void;
   }) => {
     return (
@@ -30,7 +32,7 @@ const Board = memo(
               onDeleteCard={() => {}}
             />
           ))}
-          <Button className="list-add-button" onClick={() => {}}>
+          <Button className="list-add-button" onClick={() => onAddList(board.id)}>
             +
           </Button>
         </div>

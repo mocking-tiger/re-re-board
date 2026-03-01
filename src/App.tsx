@@ -5,8 +5,7 @@ import { useBoards } from './hooks/useBoards';
 import { Board as BoardType } from './types/types';
 
 const App = () => {
-  const { boardsState, addList, deleteList, addCard } = useBoards();
-  console.log({ boardsState });
+  const { boardsState, addList, deleteList, addCard, deleteCard } = useBoards();
   const selectedBoard = boardsState.boards.find(
     (board) => board.id === boardsState.selectedBoardId
   );
@@ -20,6 +19,7 @@ const App = () => {
         onAddList={addList}
         onDeleteList={deleteList}
         onAddCard={addCard}
+        onDeleteCard={deleteCard}
       />
       <button className="reset-button" onClick={clearBoards}>
         보드 초기화

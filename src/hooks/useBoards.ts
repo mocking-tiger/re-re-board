@@ -22,5 +22,9 @@ export const useBoards = () => {
     dispatch({ type: 'ADD_CARD', payload: { boardId, listId } });
   }, []);
 
-  return { boardsState, addList, deleteList, addCard };
+  const deleteCard = useCallback((boardId: string, listId: string, cardId: string) => {
+    dispatch({ type: 'DELETE_CARD', payload: { boardId, listId, cardId } });
+  }, []);
+
+  return { boardsState, addList, deleteList, addCard, deleteCard };
 };

@@ -1,8 +1,8 @@
 import './Card.css';
 import Button from '../UI/Button/Button';
+import { memo } from 'react';
 import { formatDate } from '../../utils/helpers';
 import { Card as CardType } from '../../types/types';
-import { memo } from 'react';
 
 const Card = memo(
   ({

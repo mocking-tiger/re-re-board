@@ -14,7 +14,7 @@ const List = memo(
   }: {
     list: ListType;
     boardId: string;
-    onDeleteList: (listId: string) => void;
+    onDeleteList: (boardId: string, listId: string) => void;
     onAddCard: (boardId: string, listId: string) => void;
     onDeleteCard: (listId: string, cardId: string) => void;
   }) => {
@@ -23,7 +23,7 @@ const List = memo(
         <h1 className="list-title">
           {list.title} ({list.cards.length})
         </h1>
-        <Button className="list-delete-button" onClick={() => onDeleteList(list.id)}>
+        <Button className="list-delete-button" onClick={() => onDeleteList(boardId, list.id)}>
           x
         </Button>
 

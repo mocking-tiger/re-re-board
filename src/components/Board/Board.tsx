@@ -3,18 +3,23 @@ import List from '../List/List';
 import Button from '../UI/Button/Button';
 import BoardStats from './_components/BoardStats/BoardStats';
 import { Board as BoardType, List as ListType } from '../../types/types';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 
 const Board = memo(
   ({
     board,
     onAddList,
+    onDeleteList,
     onAddCard,
   }: {
     board: BoardType;
     onAddList: (boardId: string) => void;
+    onDeleteList: (boardId: string, listId: string) => void;
     onAddCard: (boardId: string, listId: string) => void;
   }) => {
+    const tempFn = useCallback(() => {
+      console.log('tempFn');
+    }, []);
     return (
       <div className="board">
         <div className="board-header">
@@ -27,9 +32,9 @@ const Board = memo(
               key={list.id}
               boardId={board.id}
               list={list}
-              onDeleteList={() => {}}
+              onDeleteList={onDeleteList}
               onAddCard={onAddCard}
-              onDeleteCard={() => {}}
+              onDeleteCard={tempFn}
             />
           ))}
           <Button className="list-add-button" onClick={() => onAddList(board.id)}>

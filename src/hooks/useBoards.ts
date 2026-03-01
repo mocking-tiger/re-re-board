@@ -1,6 +1,6 @@
+import { boardsReducer } from '../reducers/boardsReducer';
 import { useCallback, useEffect, useReducer } from 'react';
 import { getBoards, initialBoards, saveBoards } from '../utils/storage';
-import { boardsReducer } from '../reducers/boardsReducer';
 
 export const useBoards = () => {
   const [boardsState, dispatch] = useReducer(boardsReducer, getBoards() || initialBoards());
@@ -14,9 +14,13 @@ export const useBoards = () => {
     dispatch({ type: 'ADD_LIST', payload: { boardId } });
   }, []);
 
+  const deleteList = useCallback((boardId: string, listId: string) => {
+    dispatch({ type: 'DELETE_LIST', payload: { boardId, listId } });
+  }, []);
+
   const addCard = useCallback((boardId: string, listId: string) => {
     dispatch({ type: 'ADD_CARD', payload: { boardId, listId } });
   }, []);
 
-  return { boardsState, addList, addCard };
+  return { boardsState, addList, deleteList, addCard };
 };

@@ -6,6 +6,7 @@ export type BoardsAction =
   | { type: 'SELECT_BOARD'; payload: { boardId: string } }
   | { type: 'DELETE_BOARD'; payload: { boardId: string } }
   | { type: 'ADD_LIST'; payload: { boardId: string } }
+  | { type: 'DELETE_LIST'; payload: { boardId: string; listId: string } }
   | { type: 'ADD_CARD'; payload: { boardId: string; listId: string } };
 
 export const boardsReducer = (state: BoardsState, action: BoardsAction) => {
@@ -47,6 +48,27 @@ export const boardsReducer = (state: BoardsState, action: BoardsAction) => {
         boards: state.boards.map((board: Board) =>
           board.id === selectedBoard.id
             ? { ...selectedBoard, lists: [...selectedBoard.lists, newList] }
+            : board
+        ),
+      };
+    }
+    case 'DELETE_LIST': {
+      const selectedBoard: Board | undefined = state.boards.find(
+        (board) => board.id === action.payload.boardId
+      );
+      if (!selectedBoard) {
+        return state;
+      }
+      return {
+        ...state,
+        boards: state.boards.map((board: Board) =>
+          board.id === selectedBoard.id
+            ? {
+                ...selectedBoard,
+                lists: selectedBoard.lists.filter(
+                  (list: List) => list.id !== action.payload.listId
+                ),
+              }
             : board
         ),
       };

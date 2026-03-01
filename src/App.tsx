@@ -5,7 +5,7 @@ import { useBoards } from './hooks/useBoards';
 import { Board as BoardType } from './types/types';
 
 const App = () => {
-  const { boardsState, addList, addCard } = useBoards();
+  const { boardsState, addList, deleteList, addCard } = useBoards();
   console.log({ boardsState });
   const selectedBoard = boardsState.boards.find(
     (board) => board.id === boardsState.selectedBoardId
@@ -15,7 +15,12 @@ const App = () => {
   }
   return (
     <div className="App">
-      <Board board={selectedBoard as BoardType} onAddList={addList} onAddCard={addCard} />
+      <Board
+        board={selectedBoard as BoardType}
+        onAddList={addList}
+        onDeleteList={deleteList}
+        onAddCard={addCard}
+      />
       <button className="reset-button" onClick={clearBoards}>
         보드 초기화
       </button>

@@ -1,9 +1,9 @@
 //db 대용
 
-import { Board, BoardsState, Card, List } from '../types/types';
 import { generateId } from './helpers';
+import { Board, BoardsState, Card, List } from '../types/types';
 
-const STORAGE_KEY = 'happy-2026';
+const BOARDS_STORAGE_KEY = 'happy-2026-boards';
 
 export const initialBoard = () => {
   const boardId = generateId();
@@ -36,35 +36,6 @@ export const initialBoard = () => {
   return newBoard;
 };
 
-export const saveBoard = (board: Board) => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(board));
-};
-
-export const getBoard = () => {
-  const boardData = localStorage.getItem(STORAGE_KEY);
-  if (!boardData) {
-    return null;
-  }
-
-  const board = JSON.parse(boardData);
-
-  // 로컬스토리지에는 문자열로 저장되니까 다시 Date객체로 변환
-  board.lists.forEach((list: List) => {
-    list.cards.forEach((card: Card) => {
-      card.createdAt = new Date(card.createdAt);
-    });
-  });
-
-  return board;
-};
-
-export const clearBoard = () => {
-  localStorage.removeItem(STORAGE_KEY);
-  window.location.reload();
-};
-
-const BOARDS_STORAGE_KEY = 'happy-2026-boards';
-
 export const initialBoards = () => {
   const newBoard = initialBoard();
   return {
@@ -83,6 +54,8 @@ export const getBoards = () => {
     return null;
   }
   const boards = JSON.parse(boardsData);
+
+  // 로컬스토리지에는 문자열로 저장되니까 다시 Date객체로 변환
   boards.boards.forEach((board: Board) => {
     board.lists.forEach((list: List) => {
       list.cards.forEach((card: Card) => {

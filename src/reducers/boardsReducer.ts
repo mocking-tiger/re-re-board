@@ -20,11 +20,14 @@ export const boardsReducer = (state: BoardsState, action: BoardsAction) => {
         selectedBoardId: newBoard.id,
         boards: [...state.boards, newBoard],
       };
+
     case 'SELECT_BOARD':
       return { ...state, selectedBoardId: action.payload.boardId };
+
     case 'DELETE_BOARD':
       return {
         ...state,
+        selectedBoardId: state.boards[0].id,
         boards: state.boards.filter((board) => board.id !== action.payload.boardId),
       };
 

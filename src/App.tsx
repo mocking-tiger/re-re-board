@@ -6,14 +6,26 @@ import { Board as BoardType } from './types/types';
 import BoardTabs from './components/BoardTabs/BoardTabs';
 
 const App = () => {
-  const { boardsState, addBoard, selectBoard, addList, deleteList, addCard, deleteCard } =
-    useBoards();
+  const {
+    boardsState,
+    addBoard,
+    selectBoard,
+    deleteBoard,
+    addList,
+    deleteList,
+    addCard,
+    deleteCard,
+  } = useBoards();
   const selectedBoard: BoardType | undefined = boardsState.boards.find(
     (board) => board.id === boardsState.selectedBoardId
   );
-  if (boardsState.boards.length === 0 || !selectedBoard) {
-    return <div>보드 데이터 로드 실패</div>;
+
+  // 보드가 선택되지 않았을 경우 첫 번째 보드를 선택
+  if (!selectedBoard) {
+    selectBoard(boardsState.boards[0].id);
+    return;
   }
+
   return (
     <div className="App">
       <BoardTabs
@@ -21,6 +33,7 @@ const App = () => {
         selectedBoardId={boardsState.selectedBoardId}
         onAddBoard={addBoard}
         onSelectBoard={selectBoard}
+        onDeleteBoard={deleteBoard}
       />
       <Board
         board={selectedBoard}

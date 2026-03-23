@@ -14,6 +14,32 @@
 }
 
 /* ************************************************************** */
+/* 보드 탭 버튼 스타일 */
+/* ************************************************************** */
+.board-tab-delete {
+  width: 20px;
+  height: 20px;
+  padding-bottom: 2px;
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  display: none;
+
+  background-color: transparent;
+  border: none;
+
+  color: red;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.board-tab:hover .board-tab-delete {
+  display: block;
+}
+
+/* ************************************************************** */
 /* 리스트 버튼 스타일 */
 /* ************************************************************** */
 .list-add-button {

@@ -6,7 +6,6 @@ export const useBoards = () => {
   const [boardsState, dispatch] = useReducer(boardsReducer, getBoards() || initialBoards());
 
   useEffect(() => {
-    console.log('boardsState', boardsState);
     saveBoards(boardsState);
   }, [boardsState]);
 
@@ -17,6 +16,17 @@ export const useBoards = () => {
   const selectBoard = useCallback((boardId: string) => {
     dispatch({ type: 'SELECT_BOARD', payload: { boardId } });
   }, []);
+
+  const deleteBoard = useCallback(
+    (boardId: string) => {
+      if (boardsState.boards.length === 1) {
+        alert('보드는 최소 1개 이상 유지되어야 합니다.');
+        return;
+      }
+      dispatch({ type: 'DELETE_BOARD', payload: { boardId } });
+    },
+    [boardsState.boards.length]
+  );
 
   const addList = useCallback((boardId: string) => {
     dispatch({ type: 'ADD_LIST', payload: { boardId } });
@@ -34,5 +44,14 @@ export const useBoards = () => {
     dispatch({ type: 'DELETE_CARD', payload: { boardId, listId, cardId } });
   }, []);
 
-  return { boardsState, addBoard, selectBoard, addList, deleteList, addCard, deleteCard };
+  return {
+    boardsState,
+    addBoard,
+    selectBoard,
+    deleteBoard,
+    addList,
+    deleteList,
+    addCard,
+    deleteCard,
+  };
 };

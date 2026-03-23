@@ -1,19 +1,21 @@
 .board-tabs {
+  padding: 8px 0 0 0;
   display: flex;
   align-items: flex-end;
-  padding: 8px 0 0 0;
   background: #000;
 }
 
 .board-tab {
   min-width: 100px;
+  padding: 8px 16px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 16px;
   border-radius: 8px 8px 0 0;
   cursor: pointer;
   background: #ddd;
+  border-right: 1px solid #000;
 }
 
 .board-tab.selected {
@@ -22,10 +24,10 @@
 }
 
 .board-tab-add {
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
   border-radius: 8px 8px 0 0;
   cursor: pointer;
   background: #ddd;

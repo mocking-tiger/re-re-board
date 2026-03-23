@@ -1,18 +1,20 @@
 //db 대용
 
-import { generateId } from './helpers';
+import { generateId, getNextDisplayOrder } from './helpers';
 import { Board, BoardsState, Card, List } from '../types/types';
 
 const BOARDS_STORAGE_KEY = 'happy-2026-boards';
 
 export const initialBoard = () => {
+  const boardsData = getBoards();
   const boardId = generateId();
   const listId = generateId();
   const cardId = generateId();
   const newBoard: Board = {
     id: boardId,
-    title: '나의 첫 보드',
-    displayOrder: 1,
+    title: '새 보드',
+    displayOrder: boardsData ? getNextDisplayOrder(boardsData.boards) : 1,
+    backgroundColor: '#fff',
     lists: [
       {
         id: listId,

@@ -1,0 +1,33 @@
+.board-tabs {
+  display: flex;
+  align-items: flex-end;
+  padding: 8px 0 0 0;
+  background: #000;
+}
+
+.board-tab {
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  background: #ddd;
+}
+
+.board-tab.selected {
+  background: #fff;
+  font-weight: bold;
+}
+
+.board-tab-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  background: #ddd;
+  border: none;
+}

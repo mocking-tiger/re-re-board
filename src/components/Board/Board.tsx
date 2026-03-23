@@ -20,9 +20,9 @@ const Board = memo(
     onDeleteCard: (boardId: string, listId: string, cardId: string) => void;
   }) => {
     return (
-      <div className="board">
+      <div className="board" style={{ backgroundColor: board.backgroundColor }}>
         <div className="board-header">
-          <h1 className="board-title">{board.title}</h1>
+          {/* <h1 className="board-title">{board.title}</h1> */}
           <BoardStats board={board} />
         </div>
         <div className="board-lists">

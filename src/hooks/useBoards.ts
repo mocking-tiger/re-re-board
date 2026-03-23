@@ -10,6 +10,14 @@ export const useBoards = () => {
     saveBoards(boardsState);
   }, [boardsState]);
 
+  const addBoard = useCallback(() => {
+    dispatch({ type: 'ADD_BOARD' });
+  }, []);
+
+  const selectBoard = useCallback((boardId: string) => {
+    dispatch({ type: 'SELECT_BOARD', payload: { boardId } });
+  }, []);
+
   const addList = useCallback((boardId: string) => {
     dispatch({ type: 'ADD_LIST', payload: { boardId } });
   }, []);
@@ -26,5 +34,5 @@ export const useBoards = () => {
     dispatch({ type: 'DELETE_CARD', payload: { boardId, listId, cardId } });
   }, []);
 
-  return { boardsState, addList, deleteList, addCard, deleteCard };
+  return { boardsState, addBoard, selectBoard, addList, deleteList, addCard, deleteCard };
 };

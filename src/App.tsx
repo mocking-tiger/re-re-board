@@ -3,10 +3,12 @@ import Board from './components/Board/Board';
 import { clearBoards } from './utils/storage';
 import { useBoards } from './hooks/useBoards';
 import { Board as BoardType } from './types/types';
+import BoardTabs from './components/BoardTabs/BoardTabs';
 
 const App = () => {
-  const { boardsState, addList, deleteList, addCard, deleteCard } = useBoards();
-  const selectedBoard = boardsState.boards.find(
+  const { boardsState, addBoard, selectBoard, addList, deleteList, addCard, deleteCard } =
+    useBoards();
+  const selectedBoard: BoardType | undefined = boardsState.boards.find(
     (board) => board.id === boardsState.selectedBoardId
   );
   if (boardsState.boards.length === 0 || !selectedBoard) {
@@ -14,8 +16,14 @@ const App = () => {
   }
   return (
     <div className="App">
+      <BoardTabs
+        boards={boardsState.boards}
+        selectedBoardId={boardsState.selectedBoardId}
+        onAddBoard={addBoard}
+        onSelectBoard={selectBoard}
+      />
       <Board
-        board={selectedBoard as BoardType}
+        board={selectedBoard}
         onAddList={addList}
         onDeleteList={deleteList}
         onAddCard={addCard}

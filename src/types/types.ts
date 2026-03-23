@@ -1,32 +1,24 @@
 // ================================================================
 // 컴포넌트
 // ================================================================
-export interface Card {
-  id: string;
-
+export interface Card extends OrderableObject {
   title: string;
   description: string;
-  displayOrder: number;
   createdAt: Date;
 
   listId: string;
 }
 
-export interface List {
-  id: string;
-
+export interface List extends OrderableObject {
   title: string;
-  displayOrder: number;
 
   boardId: string;
   cards: Card[];
 }
 
-export interface Board {
-  id: string;
-
+export interface Board extends OrderableObject {
   title: string;
-  displayOrder: number;
+  backgroundColor: string;
 
   lists: List[];
 }

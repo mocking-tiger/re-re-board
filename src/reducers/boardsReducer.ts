@@ -1,5 +1,6 @@
 import { BoardsState, Board, Card, List } from '../types/types';
 import { generateId, getNextDisplayOrder } from '../utils/helpers';
+import { initialBoard } from '../utils/storage';
 
 export type BoardsAction =
   | { type: 'ADD_BOARD' }
@@ -13,14 +14,10 @@ export type BoardsAction =
 export const boardsReducer = (state: BoardsState, action: BoardsAction) => {
   switch (action.type) {
     case 'ADD_BOARD':
-      const newBoard: Board = {
-        id: generateId(),
-        title: '새 보드',
-        displayOrder: getNextDisplayOrder(state.boards),
-        lists: [],
-      };
+      const newBoard = initialBoard();
       return {
         ...state,
+        selectedBoardId: newBoard.id,
         boards: [...state.boards, newBoard],
       };
     case 'SELECT_BOARD':
